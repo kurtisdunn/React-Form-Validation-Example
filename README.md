@@ -1,7 +1,23 @@
 # React-Form-Validation-Example
 Quick react form validation example with error handling.
 
+
+### Build it
+
+```bash
+webpack
 ```
+
+### Develop it
+
+```bash
+npm run dev
+
+```
+
+###Validating a component
+
+```bash
 <Form method={ ContactPost }>
   <Input title={'First Name'} name={'firstName'} validator={'required'} />
   <Input title={'Last Name'} name={'lastName'} validator={'required'}/>
