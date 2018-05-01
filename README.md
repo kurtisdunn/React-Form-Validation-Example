@@ -15,7 +15,7 @@ npm run dev
 
 ```
 
-###Validating a component
+### Validating a component
 
 ```bash
 <Form method={ ContactPost }>
