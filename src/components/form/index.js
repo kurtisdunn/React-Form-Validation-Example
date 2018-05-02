@@ -65,7 +65,8 @@ export default class Form extends React.Component {
     super(props);
 
     this.state = {
-      erros: null
+      erros: null,
+      response: null
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -103,13 +104,17 @@ export default class Form extends React.Component {
       })
     );
     function alert(){
-      if(this.state.response){
-        return (<Alert type={ this.state.responseType } message={ this.state.response }/>);
+      console.log(this.state);
+      if(this.state){
+        if(this.state.response){
+          return (<Alert type={ this.state.responseType } message={ this.state.response }/>);
+        }
       }
+
     }
     return (
       <form onSubmit={this.handleSubmit} data-method={this.props.method}>
-        { alert }
+        { alert() }
         { childrenWithProps }
       </form>
     );

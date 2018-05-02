@@ -14,10 +14,7 @@
         "sourceType": "module"
     },
     "rules": {
-        "linebreak-style": [
-            2,
-            "unix"
-        ],
+        "linebreak-style": 0,
         "no-unused-vars": 0,
         "no-console": 0,
         "quotes": [ 1, "single" ],
