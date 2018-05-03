@@ -103,18 +103,9 @@ export default class Form extends React.Component {
         errors: that.state.errors
       })
     );
-    function alert(){
-      console.log(that.state);
-      if(that.state){
-        if(that.state.response){
-          return (<Alert type={ this.state.responseType } message={ this.state.response }/>);
-        }
-      }
-
-    }
     return (
       <form onSubmit={this.handleSubmit} data-method={this.props.method}>
-        {that.state.response ? <Alert type={ this.state.responseType } message={ this.state.response }/> : null}
+        { that.state.response ? <Alert type={ this.state.responseType } message={ this.state.response }/> : null}
         { childrenWithProps }
       </form>
     );
