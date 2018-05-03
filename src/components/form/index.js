@@ -104,9 +104,9 @@ export default class Form extends React.Component {
       })
     );
     function alert(){
-      console.log(this.state);
-      if(this.state){
-        if(this.state.response){
+      console.log(that.state);
+      if(that.state){
+        if(that.state.response){
           return (<Alert type={ this.state.responseType } message={ this.state.response }/>);
         }
       }
@@ -114,7 +114,7 @@ export default class Form extends React.Component {
     }
     return (
       <form onSubmit={this.handleSubmit} data-method={this.props.method}>
-        { alert() }
+        {that.state.response ? <Alert type={ this.state.responseType } message={ this.state.response }/> : null}
         { childrenWithProps }
       </form>
     );
