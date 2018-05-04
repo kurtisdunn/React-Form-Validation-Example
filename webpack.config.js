@@ -5,7 +5,7 @@ const pkg = require(path.join(process.cwd(), 'package.json'));
 const shouldMininimize = process.argv.indexOf('--min') !== -1;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const imageopts = {
+const imageOpts = {
   bypassOnDebug: true,
   optipng: {
     optimizationLevel: 7
@@ -23,8 +23,6 @@ const standardConfig = {
     filename: 'index.js'
   },
   module: {
-    // loaders: [{
-
     loaders: [
       {
 
@@ -45,7 +43,7 @@ const standardConfig = {
         }
       }, {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        loaders: ['file-loader?hash=sha512&digest=hex&name=[hash].[ext]', `image-webpack-loader?${JSON.stringify(imageopts)}`]
+        loaders: ['file-loader?hash=sha512&digest=hex&name=[hash].[ext]', `image-webpack-loader?${JSON.stringify(imageOpts)}`]
       }
     ]
   },
