@@ -56,7 +56,7 @@ const standardConfig = {
     disableHostCheck: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:3001/api',
+        target: '<API LOCATION>',
         pathRewrite: {
           '/api' : ''
         },
@@ -66,11 +66,7 @@ const standardConfig = {
   },
   plugins: [
     new webpack.ProvidePlugin({
-      '$': 'jquery', 'window.jQuery': 'jquery', 'window.$': 'jquery', 'Popper': 'popper.js',
-      // 'window.util' : 'exports-loader?Util!bootstrap/js/dist/util',
-      // 'window.dropdown' : 'exports-loader?Dropdown!bootstrap/js/dist/dropdown',
-      // 'window.modal' : 'exports-loader?Modal!bootstrap/js/dist/modal',
-      // 'window.carousel' : 'exports-loader?Modal!bootstrap/js/dist/carousel'
+      '$': 'jquery', 'window.jQuery': 'jquery', 'window.$': 'jquery', 'Popper': 'popper.js'
     }),
     new HtmlWebpackPlugin({template: 'src/index.html', hash: true, inject: false}),
     new webpack.optimize.UglifyJsPlugin({include: /\.min\.js$/, minimize: true})
