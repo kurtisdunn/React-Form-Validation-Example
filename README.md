@@ -17,7 +17,7 @@ npm run dev
 
 ### Validating a component
 
-```bash
+```js
 <Form method={ ContactPost }>
   <Input title={'First Name'} name={'firstName'} validator={'required'} />
   <Input title={'Last Name'} name={'lastName'} validator={'required'}/>
