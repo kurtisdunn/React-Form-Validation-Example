@@ -51,7 +51,6 @@ export default class Select extends React.Component {
     const that = this;
     const hasErrors = this.state.errors && this.state.errors.length;
 
-
     function option(){
         const options = that.props.options ? that.props.options : null;
         return (
@@ -62,9 +61,10 @@ export default class Select extends React.Component {
             : null
         );
     }
+
     return (
       <div className={`form-group ${ hasErrors ? 'has-danger' : ''}`}>
-        {this.props.label ? <label htmlFor={this.props.id ? this.props.id : ''}> {this.props.title}</label> : '' }
+        {this.props.title ? <label htmlFor={this.props.id ? this.props.id : ''}> {this.props.title}</label> : '' }
         <select
           data-validators={ this.props.validator ? this.props.validator : '' }
           className={`form-control ${ hasErrors ? 'form-control-danger' : ''}`} id={ this.props.id ? this.props.id : '' }

@@ -32,6 +32,7 @@ export default function (elem, done) {
     let errors = [];
 
     if (namesLen) {
+      // console.log(names)
       names.forEach(function (name) {
         const rule = rules[name];
         if (!rule) {

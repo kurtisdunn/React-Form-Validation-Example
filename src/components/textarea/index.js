@@ -53,7 +53,7 @@ export default class Textarea extends React.Component {
     const hasErrors = this.state.errors && this.state.errors.length;
     return (
       <div className={`form-group ${ hasErrors ? 'has-danger' : ''}`}>
-        {this.props.label ? <label htmlFor={this.props.id ? this.props.id : ''}> {this.props.title}</label> : '' }
+        {this.props.title ? <label htmlFor={this.props.id ? this.props.id : ''}> {this.props.title}</label> : '' }
         <textarea
           rows={ this.props.rows ? this.props.rows : '' }
           data-validators={ this.props.validator ? this.props.validator : '' }

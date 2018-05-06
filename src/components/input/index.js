@@ -45,10 +45,10 @@ export default class Input extends React.Component {
   }
 
   render() {
-    const hasErrors = this.state.errors && this.state.errors.length;
+    const hasErrors = this.props.errors && this.props.errors.length;
     return (
       <div className={`form-group ${ hasErrors ? 'has-danger' : ''}`}>
-        {this.props.label ? <label htmlFor={this.props.id ? this.props.id : ''}> {this.props.title}</label> : '' }
+        {this.props.title ? <label htmlFor={this.props.id ? this.props.id : ''}> {this.props.title}</label> : '' }
         <input data-validators={ this.props.validator ? this.props.validator : '' } type={ this.props.type ? this.props.type : 'input' } className={`form-control ${ hasErrors ? 'form-control-danger' : ''}`} id={ this.props.id ? this.props.id : '' } placeholder={ this.props.title ? this.props.title : '' } onChange={ this.handleChange } />
         {hasErrors ? <div className="form-control-feedback">{this.state.errors[0]}</div> : ''}
       </div>

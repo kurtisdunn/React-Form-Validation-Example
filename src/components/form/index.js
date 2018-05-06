@@ -82,6 +82,8 @@ export default class Form extends React.Component {
     }
 
      validate(event.target, function (field, errors) {
+       // console.log('field :', field);
+       // console.log('errors :', errors);
        that.setState({
          errors: errors
        });
