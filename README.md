@@ -17,13 +17,11 @@ npm run dev
 
 ### Validating a component
 
+Add the validator prop to an Input, Select, Radio or Input. This demo includes 2 validators, required & email.
+
 ```js
-<Form method={ ContactPost }>
-  <Input title={'First Name'} name={'firstName'} validator={'required'} />
+
   <Input title={'Last Name'} name={'lastName'} validator={'required'}/>
-  <Input title={'Email'} name={'email'} type={'email'} validator={'required, email'} />
-  <Textarea rows={'10'} title={'Message'} name={'message'} validator={'required'} />
-  <Button value={'Send!'} class={'btn-submit'} type={'submit'} />
-</Form>
+
 
 ```
