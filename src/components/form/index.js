@@ -70,45 +70,49 @@ export default class Form extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.recursiveCloneChildren = this.recursiveCloneChildren.bind(this);
   }
 
   handleSubmit(event) {
     const that = this;
     const form = event.target;
     const handler = this.props.method;
-
     if (handler) {
      event.preventDefault();
     }
-
-     validate(event.target, function (field, errors) {
-       // console.log('field :', field);
-       // console.log('errors :', errors);
-       that.setState({
-         errors: errors
-       });
-      }, function (form, errors) {
-        if (!handler || errors.length) {
-          return;
-        }
-        handler(serialize(form))
-          .then(emitResponse(form))
-          .then(emitSuccess(form, that))
-          .catch(emitError(form, that));
-      });
+    validate(event.target, function (field, errors) {
+     that.setState({
+       errors: errors
+     });
+    }, function (form, errors) {
+      if (!handler || errors.length) {
+        return;
+      }
+      handler(serialize(form))
+        .then(emitResponse(form))
+        .then(emitSuccess(form, that))
+        .catch(emitError(form, that));
+    });
   }
-
-  render() {
+  recursiveCloneChildren(children) {
     const that = this;
-    const childrenWithProps = React.Children.map(this.props.children,
-      (child) => React.cloneElement(child, {
-        errors: that.state.errors
-      })
-    );
+    return React.Children.map(children, child => {
+        var childProps = {};
+        if (React.isValidElement(child)) {
+          childProps = { errors: that.state.errors };
+        }
+        if (child.props) {
+          childProps.children = this.recursiveCloneChildren(child.props.children);
+          return React.cloneElement(child, childProps);
+        }
+        return child;
+    });
+  }
+  render() {
     return (
-      <form onSubmit={this.handleSubmit} data-method={this.props.method}>
-        { that.state.response ? <Alert type={ this.state.responseType } message={ this.state.response }/> : null}
-        { childrenWithProps }
+      <form onSubmit={this.handleSubmit} >
+        { this.state.response ? <Alert type={ this.state.responseType } message={ this.state.response }/> : null}
+        { this.recursiveCloneChildren(this.props.children) }
       </form>
     );
   }
